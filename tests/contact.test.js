@@ -9,10 +9,10 @@ let token;
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGO_URI);
-  const user = new User({ email: "testuser", password: "testpassword" });
+  const user = new User({ email: "testuser@yahoo.com", password: "testpassword" });
   await user.save();
   const res = await request(app).post("/api/auth/login").send({
-    email: "testuser",
+    email: "testuser@yahoo.com",
     password: "testpassword",
   });
   token = res.body.token;
